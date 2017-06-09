@@ -1,0 +1,13 @@
+
+{% load static navigation_tags wagtailcore_tags %}
+
+    <nav class="main-menu" role="navigation">
+      <ul class="navigation-menu">
+      {% for menuitem in menuitems %}
+        <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
+                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  

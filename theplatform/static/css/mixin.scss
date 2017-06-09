@@ -1,0 +1,123 @@
+// Very quick series of mixins and variables for the project
+
+// Define breakpoint pixel values
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+$breakpoint-classes: (small medium large xlarge);
+
+// Colours
+$grey: #ccc;
+$light-grey: #F5F5F6;
+
+// Values
+$max-width: 1240px;
+$global-column: 10px;
+
+// Basic grid system
+@mixin row {
+    display: block;
+    padding-left: 200px;
+    padding-right: 200px;
+    @include breakpoint(large down){
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    @include breakpoint(medium down){
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    @include breakpoint(small down){
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@mixin row-left  {
+  // @TODO It may be better to have a `row-left` and `row-right`
+  // mixin and replace all the `row` mixins?
+    display: block;
+    padding-left: 200px;
+    @include breakpoint(large down){
+        padding-left: 100px;
+    }
+    @include breakpoint(medium down){
+        padding-left: 50px;
+    }
+    @include breakpoint(small down){
+        padding-left: 20px;
+    }
+}
+
+@mixin max-width {
+  max-width: $max-width;
+}
+
+@mixin max-width-limit {
+  max-width: $max-width / 1.5;
+}
+
+
+@mixin grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 200px;
+  padding-right: 200px;
+  @include breakpoint(large down){
+      padding-left: 100px;
+      padding-right: 100px;
+  }
+  @include breakpoint(medium down){
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+  @include breakpoint(small down){
+      display: block;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+}
+
+@mixin grid-column($columns) {
+  width: (100%/$columns)-3%;
+  margin-bottom: $global-column * 2;
+  margin-right: $global-column * 2;
+  background-color: $light-grey;
+  overflow: hidden;
+  @include breakpoint(medium down){
+    width: (100%/(($columns)-1))-3%;
+  }
+  @include breakpoint(small down){
+    width: (100%/(($columns)-2))-4%;
+  }
+
+  //   @if length($columns) == 2 {
+  //     &:nth-of-type(even){
+  //       margin-right: 0;
+  //     }
+  //   @else {
+  //     &:nth-of-type(#{$columns}) {
+  //     background-color: green;
+  //       }
+  //     }
+  //   }
+}
+
+// Mixin for typography.scss
+// Transitions - Usage: @include transition(all .2s ease);
+@mixin transition($args...) {
+    -webkit-transition: $args;
+       -moz-transition: $args;
+        -ms-transition: $args;
+         -o-transition: $args;
+            transition: $args;
+}
+
+// PX to REM - Usage: font-size: rem(37px);
+@function rem($px, $base: $base-font-size) {
+    @return ($px / $base) * 1rem;
+}

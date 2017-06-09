@@ -1,0 +1,459 @@
+/* A quick SASS file to style the wagtail-beginner site */
+
+@charset 'utf-8';
+@import 'reset';
+@import 'utils';
+@import 'mixin';
+@import 'typography';
+
+/* SCAFFOLDING */
+body {
+}
+
+header {
+    @include row;
+    border-bottom: 1px solid $light-grey;
+    font-family: $title-font-family;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    a {
+        color: $header-color;
+    }
+}
+
+.main-menu {
+    @include row;
+    padding-bottom: $header-margin / 2;
+    border-bottom: 1px solid $grey;
+    ul {
+        margin: 0;
+    }
+    li {
+        display: inline-block;
+        margin-right: 40px;
+        &.current {
+            border-bottom: 6px solid $link-color;
+            padding-bottom: 8px;
+            margin-bottom: -14px;
+        }
+    }
+}
+
+.breadcrumbs {
+    @include row;
+    background-color: $light-grey;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    li {
+        display: inline-block;
+        margin-right: $header-margin / 2;
+        &::after {
+                content: "»";
+                margin-left: $header-margin / 2;
+        }
+    &:last-child {
+        &::after {
+            display: none;
+            }
+        }
+    }
+}
+
+content {
+    h1 {
+        @include row;
+        position: relative;
+    }
+    .lead_image {
+        max-height: 70vh;
+        overflow: hidden;
+        position: relative;
+        .gradient {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 10%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 20%);
+            bottom: 0;
+            height: 100px;
+            position: absolute;
+            width: 100%;
+        }
+        img {
+            margin: 0;
+            height: auto;
+            width: 100%;
+        }
+    }
+    main {
+        position: relative;
+    }
+}
+
+footer.site-footer {
+    @include row;
+    background-color: $light-grey;
+    border-top: 1px solid $grey;
+    margin-top: $header-margin;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* DETAIL VIEWS */
+.template-location-page {
+    content {
+        h1 {
+            margin-top: -55px;
+        }
+    }
+}
+
+.template-person-page {
+    .person-image {
+        @include row;
+        border-radius: 100%;
+        margin-left: -50px;
+    }
+    aside {
+        @include row;
+        clear: both;
+        display: flex;
+        .status-location {
+            display: flex;
+            flex-direction: column;
+            margin-left: 80px;
+        }
+    }
+    .biography-title {
+            @include row;
+    }
+}
+
+.template-location-page {
+    aside {
+        @include row;
+        clear: both;
+        .people {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            .person {
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                margin: 0 20px 10px 0px;
+                max-width: 100px;
+                text-align: center;
+                img {
+                    border-radius: 100px;
+                    margin: 0 0 10px 0;
+                }
+            }
+        }
+    }
+}
+
+.block-paragraph {
+    @include row;
+    @include max-width-limit;
+    margin-bottom: $header-margin / 2;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.block-blockquote {
+    width: 250px;
+    float: right;
+    margin-right: 15%;
+    margin-left: 50px;
+    blockquote {
+        font-family: $title-font-family;
+        margin: 20px 0;
+        text-align: left;
+        &::before {
+            content: "\201C";
+            display: block;
+            font-family: serif;
+            font-size: 4em;
+            margin-bottom: -20px;
+            margin-left: -10px;
+            opacity: 0.5;
+        }
+        footer {
+            font-family: $font-family;
+            font-style: normal;
+            margin-top: 10px;
+            padding-top: 10px;
+            .attribute_group {
+                margin-top: 0;
+                font-weight: bold;
+            }
+        }
+    }
+    @include breakpoint(medium down) {
+        @include row;
+        display: block;
+        float: none;
+        margin-left: 0;
+        width: 90%;
+    }
+}
+
+.block-header {
+    @include row;
+    @include max-width-limit;
+}
+
+.block-header + .block-header {
+    h2 {
+        margin-top: 0;
+        color: pink;
+    }
+}
+
+.block-embed {
+    @include row-left;
+    float: left;
+    margin: $header-margin 0;
+    width: $max-width / 1.5;
+    @include breakpoint(medium down){
+        width: 80%
+    }
+    @include breakpoint(small down){
+        width: 100%;
+    }
+}
+
+.block-image {
+    img {
+        height: auto;
+    }
+    figcaption {
+        font-size: 0.9em;
+        font-style: italic;
+        line-height: 1.4em;
+        margin-top: 20px;
+        &::before {
+            color: #888;
+            content: "\1F4F7";
+            // An emojii because I feel like one. Also because <3 unicode
+            float: left;
+            font-size: 20px;
+            font-style: normal;
+            margin: -1px 10px 15px 0;
+        }
+    }
+    .image.contain {
+        @include row;
+        @include max-width-limit;
+    }
+    .image.full {
+        float: right;
+        // To address an adjacent block quote or 50% image
+        img {
+            width: 100%;
+            // To force full-width even if a smaller image uploaded
+        }
+        figcaption {
+            @include row
+        }
+    }
+    .image.half {
+        width: 50%;
+        float: right;
+        max-width: 440px;
+        margin-right: 50px;
+        margin-left: 20px;
+        figure {
+            float: right;
+            margin: 10px 0;
+        }
+        img {
+            width: 100%;
+        }
+        @include breakpoint(medium down){
+            margin-left: 40px;
+        }
+        @include breakpoint(small down){
+            margin-left: 0px;
+            margin-right: 0px;
+            max-width: 100%;
+            width: 100%;
+            figure {
+                margin: 10px 20px;
+            }
+        }
+    }
+    .image.full {
+        height: auto;
+    }
+}
+
+/* LIST VIEWS */
+.list {
+    @include grid;
+    .list-3 {
+        @include grid-column(3);
+    }
+}
+
+.people, .locations {
+    .list-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // note: we align `.people` to the bottom of the card w/out defining an 
+        // absolute height using justify-content on the parent item and then 
+        // `flex:1` on `.text`
+        .image {
+            max-height: 168px;
+            overflow: hidden;
+            img { 
+                height: auto;
+                margin: 0;
+                width: 100%;
+            }
+        }
+        .text {
+            padding: 0 20px;
+            flex: 1;
+            h2 {
+                margin-top: 12px;
+                a {
+                    color: $header-color;
+                }
+            }
+            .skills {
+                margin: 0 0 10px 0;
+                li {
+                    display: inline-block;
+                    list-style: none;
+                    margin: 0 auto;
+                    span {
+                        // To make the comma sit next to the link
+                        margin-left: -2px;
+                    }
+                }
+            }
+        }
+        .list-item-footer {
+            padding: 0 20px;
+            .location {
+                display: flex;
+                font-size: 1.3em;
+                padding-bottom: 10px;
+                img {
+                    margin: 5px 5px 0 -5px;
+                    width: auto;
+                    height: 18px;
+                }
+            }
+            .people {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0;
+                .person {
+                    display: flex;
+                    flex-direction: column;
+                    list-style: none;
+                    margin: 0 20px 10px 0px;
+                    max-width: 100px;
+                    text-align: center;
+                    img {
+                        border-radius: 100px;
+                        margin: 0 auto 10px auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.template-skills-index-page {
+    content {
+        @include row;
+    }
+}
+
+/* Quick widths */
+.half { 
+    width: 50%;
+}
+.percent40 {
+    width: 40%;
+}
+.percent60 {
+    width: 60%;
+}
+
+/* Homepage */
+.template-home-page {
+    .strapline {
+        @include row;
+        font-size: 2em;
+        p {
+            font-size: 1em;
+            padding: 20px 0;
+        }
+    }
+    .row-one, .row-two, .row-three {
+        @include row;
+        display: flex;
+        p {
+            font-size: 1.6em;
+            line-height: 1.8;
+            margin-top: 30px;
+            max-width: 550px;
+        }
+        footer {
+            margin-top: 20px;
+            a::after {
+                content: "\27F6";
+                margin-left: 10px;
+            }
+        }
+        img {
+            max-height: 400px;
+            width: auto;
+        }
+    }
+    .row-one, .row-two {
+        border-bottom: 1px solid $grey;
+    }
+    h2 {
+        margin-top: 60px;
+        a {
+            color: $header-color;
+            font-size: 72px;
+            font-weight: bold;
+        }
+    }
+    .row-two, .row-three {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/* From Wagtail core */
+/* Responsive image/video classes */
+.rich-text img {
+    max-width: 100%;
+    height: auto;
+}
+.richtext-image.left{
+    float:left;
+}
+.richtext-image.right{
+    float:right;
+}
+.responsive-object {
+    position: relative;
+}
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

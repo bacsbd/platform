@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+<content>
+<h1>{{ page.title }}</h1>
+<div class="people list grid-parent">
+    {% for person in people %}
+    <div class="list-item list-3">
+        <div class="image">
+        {% image person.image fill-400x168-c100 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+        </div>
+
+        <div class="text">
+        <h2><a href="{{ person.url }}">{{ person.title }}</a></h2>
+        <ul class="skills">
+            {% for skill in person.skills  %}
+                <li>
+                <a href="{{ skill.parent_url }}#{{ skill.slug }}">{{ skill.title }}</a>
+                {% if not forloop.last %}<span>, </span>{% endif %}</li>
+                
+            {% endfor %}
+        </ul>
+        </div>
+        <div class="list-item-footer">
+            <p class="location"><img src="/static/images/map-marker.png">
+            {% for place in person.location  %}
+                <a href="{{ place.url }}">{{ place.title }}</a>
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</content>
+{% endblock %}
+
+{% comment %}
+    SKILLS
+    You'll notice that for the skills we don't link directly to the skills detail
+    page. It's mostly to show how we can use a foreignkey relationship within
+    the editor interface (e.g. to connect a person to a skill) but then link to
+    the parent within the template.
+
+    We do this by defining the parent_url on the SkillsPage model
+{% endcomment %}
