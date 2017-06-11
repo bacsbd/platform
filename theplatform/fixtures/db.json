@@ -821,34 +821,6 @@
   }
 },
 {
-  "model": "wagtailimages.filter",
-  "pk": 1,
-  "fields": {
-    "spec": "max-165x165"
-  }
-},
-{
-  "model": "wagtailimages.filter",
-  "pk": 2,
-  "fields": {
-    "spec": "width-400"
-  }
-},
-{
-  "model": "wagtailimages.filter",
-  "pk": 3,
-  "fields": {
-    "spec": "original"
-  }
-},
-{
-  "model": "wagtailimages.filter",
-  "pk": 4,
-  "fields": {
-    "spec": "max-800x600"
-  }
-},
-{
   "model": "wagtailcore.site",
   "pk": 1,
   "fields": {
