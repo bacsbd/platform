@@ -1,0 +1,1026 @@
+@charset "UTF-8";
+/* A quick SASS file to style the wagtail-beginner site */
+/* Eric Meyer's CSS Reset
+   http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   This is a Sass partial
+*/
+/* line 20, /vagrant/theplatform/static/css/reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 30, /vagrant/theplatform/static/css/reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 33, /vagrant/theplatform/static/css/reset.scss */
+body {
+  line-height: 1; }
+
+/* line 36, /vagrant/theplatform/static/css/reset.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 39, /vagrant/theplatform/static/css/reset.scss */
+blockquote, q {
+  quotes: none; }
+
+/* line 43, /vagrant/theplatform/static/css/reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 47, /vagrant/theplatform/static/css/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*------------------------------------*    # Simple Typography Settings
+
+Copyright of [Adam Marsden](http://adam-marsden.co.uk/) and contributors.
+Licensed under the MIT license.
+
+\*------------------------------------*/
+/*------------------------------------*    # Type
+\*------------------------------------*/
+/* line 53, /vagrant/theplatform/static/css/typography.scss */
+*, html, body {
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+/* line 64, /vagrant/theplatform/static/css/typography.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Slabo 27px", serif;
+  margin: 36px 0 24px 0;
+  color: #000000;
+  line-height: 1.25em;
+  font-weight: 400; }
+
+/* line 72, /vagrant/theplatform/static/css/typography.scss */
+h1 {
+  font-size: 2.5rem; }
+
+/* line 76, /vagrant/theplatform/static/css/typography.scss */
+h2 {
+  font-size: 1.92308rem;
+  margin-bottom: 12px; }
+
+/* line 81, /vagrant/theplatform/static/css/typography.scss */
+h3 {
+  font-size: 1.66667rem; }
+
+/* line 85, /vagrant/theplatform/static/css/typography.scss */
+h4 {
+  font-size: 1.47059rem; }
+
+/* line 89, /vagrant/theplatform/static/css/typography.scss */
+h5 {
+  font-size: 1.38889rem; }
+
+/* line 93, /vagrant/theplatform/static/css/typography.scss */
+h6 {
+  font-size: 1.25rem; }
+
+/* line 100, /vagrant/theplatform/static/css/typography.scss */
+p {
+  margin-top: 20px;
+  font-size: 1.0625rem;
+  line-height: 1.5em;
+  color: #505050; }
+  /* line 106, /vagrant/theplatform/static/css/typography.scss */
+  p:first-of-type {
+    margin-top: 0; }
+
+/* line 114, /vagrant/theplatform/static/css/typography.scss */
+a {
+  color: #3789C4;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+  /* line 119, /vagrant/theplatform/static/css/typography.scss */
+  a:hover {
+    color: #2c6d9c; }
+
+/* line 126, /vagrant/theplatform/static/css/typography.scss */
+ul, ol {
+  margin: 20px 0 0 20px; }
+  /* line 129, /vagrant/theplatform/static/css/typography.scss */
+  ul li, ol li {
+    margin-top: 10px;
+    line-height: 1.5em;
+    color: #505050; }
+  /* line 135, /vagrant/theplatform/static/css/typography.scss */
+  ul ul, ul ol, ol ul, ol ol {
+    margin-top: 0; }
+
+/* line 142, /vagrant/theplatform/static/css/typography.scss */
+ul li {
+  list-style: disc; }
+
+/* line 148, /vagrant/theplatform/static/css/typography.scss */
+ul ul li {
+  list-style: circle; }
+
+/* line 156, /vagrant/theplatform/static/css/typography.scss */
+ol li {
+  list-style: decimal; }
+
+/* line 163, /vagrant/theplatform/static/css/typography.scss */
+hr {
+  height: 1px;
+  margin: 30px 0;
+  border: none;
+  background-color: #DADADA; }
+
+/* line 172, /vagrant/theplatform/static/css/typography.scss */
+blockquote {
+  margin: 30px 0;
+  font-size: 1.4375rem;
+  line-height: 1.5em;
+  color: #505050;
+  text-align: center;
+  font-style: italic; }
+
+/* line 183, /vagrant/theplatform/static/css/typography.scss */
+table {
+  width: 100%;
+  margin: 30px 0;
+  border-collapse: collapse; }
+
+/* line 189, /vagrant/theplatform/static/css/typography.scss */
+table, td, th {
+  border: 1px solid #DADADA;
+  text-align: left; }
+
+/* line 194, /vagrant/theplatform/static/css/typography.scss */
+th {
+  font-weight: 800; }
+
+/* line 198, /vagrant/theplatform/static/css/typography.scss */
+th, td {
+  padding: 15px; }
+
+/* line 204, /vagrant/theplatform/static/css/typography.scss */
+figure {
+  margin: 30px 0; }
+  /* line 207, /vagrant/theplatform/static/css/typography.scss */
+  figure img {
+    margin: 0; }
+
+/* line 212, /vagrant/theplatform/static/css/typography.scss */
+figcaption {
+  margin-top: 10px;
+  color: #6a6a6a;
+  font-size: 16px; }
+
+/* line 220, /vagrant/theplatform/static/css/typography.scss */
+pre {
+  display: block;
+  margin: 0 0 40px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #DADADA;
+  overflow: auto;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+  /* line 231, /vagrant/theplatform/static/css/typography.scss */
+  pre code {
+    position: static;
+    padding: 0;
+    border: none;
+    line-height: 1.5em; }
+
+/* line 239, /vagrant/theplatform/static/css/typography.scss */
+code {
+  position: relative;
+  top: -0.2em;
+  padding: 3px;
+  font-family: Courier New, Courier, monospace;
+  font-size: 0.75893rem;
+  color: #747474;
+  line-height: 1em;
+  pointer-events: none;
+  border: 1px solid #DADADA;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+/* line 257, /vagrant/theplatform/static/css/typography.scss */
+em, i, .italic {
+  font-style: italic; }
+
+/* line 261, /vagrant/theplatform/static/css/typography.scss */
+strong, b, .bold {
+  font-weight: 800; }
+
+/* line 265, /vagrant/theplatform/static/css/typography.scss */
+img {
+  display: block;
+  max-width: 100%;
+  margin: 30px 0; }
+
+/* SCAFFOLDING */
+/* line 13, /vagrant/theplatform/static/css/main.scss */
+header {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  border-bottom: 1px solid #F5F5F6;
+  font-family: "Slabo 27px", serif;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 13, /vagrant/theplatform/static/css/main.scss */
+    header {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 13, /vagrant/theplatform/static/css/main.scss */
+    header {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 13, /vagrant/theplatform/static/css/main.scss */
+    header {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 20, /vagrant/theplatform/static/css/main.scss */
+  header a {
+    color: #000000; }
+
+/* line 25, /vagrant/theplatform/static/css/main.scss */
+.main-menu {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 25, /vagrant/theplatform/static/css/main.scss */
+    .main-menu {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 25, /vagrant/theplatform/static/css/main.scss */
+    .main-menu {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 25, /vagrant/theplatform/static/css/main.scss */
+    .main-menu {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 29, /vagrant/theplatform/static/css/main.scss */
+  .main-menu ul {
+    margin: 0; }
+  /* line 32, /vagrant/theplatform/static/css/main.scss */
+  .main-menu li {
+    display: inline-block;
+    margin-right: 40px; }
+    /* line 35, /vagrant/theplatform/static/css/main.scss */
+    .main-menu li.current {
+      border-bottom: 6px solid #3789C4;
+      padding-bottom: 8px;
+      margin-bottom: -14px; }
+
+/* line 43, /vagrant/theplatform/static/css/main.scss */
+.breadcrumbs {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  background-color: #F5F5F6;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 15px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 43, /vagrant/theplatform/static/css/main.scss */
+    .breadcrumbs {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 43, /vagrant/theplatform/static/css/main.scss */
+    .breadcrumbs {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 43, /vagrant/theplatform/static/css/main.scss */
+    .breadcrumbs {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 49, /vagrant/theplatform/static/css/main.scss */
+  .breadcrumbs li {
+    display: inline-block;
+    margin-right: 12px; }
+    /* line 52, /vagrant/theplatform/static/css/main.scss */
+    .breadcrumbs li::after {
+      content: "»";
+      margin-left: 12px; }
+    /* line 57, /vagrant/theplatform/static/css/main.scss */
+    .breadcrumbs li:last-child::after {
+      display: none; }
+
+/* line 65, /vagrant/theplatform/static/css/main.scss */
+content h1 {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  position: relative; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 65, /vagrant/theplatform/static/css/main.scss */
+    content h1 {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 65, /vagrant/theplatform/static/css/main.scss */
+    content h1 {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 65, /vagrant/theplatform/static/css/main.scss */
+    content h1 {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* line 69, /vagrant/theplatform/static/css/main.scss */
+content .lead_image {
+  max-height: 70vh;
+  overflow: hidden;
+  position: relative; }
+  /* line 73, /vagrant/theplatform/static/css/main.scss */
+  content .lead_image .gradient {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 10%, white 80%, white 20%);
+    bottom: 0;
+    height: 100px;
+    position: absolute;
+    width: 100%; }
+  /* line 80, /vagrant/theplatform/static/css/main.scss */
+  content .lead_image img {
+    margin: 0;
+    height: auto;
+    width: 100%; }
+
+/* line 86, /vagrant/theplatform/static/css/main.scss */
+content main {
+  position: relative; }
+
+/* line 91, /vagrant/theplatform/static/css/main.scss */
+footer.site-footer {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  background-color: #F5F5F6;
+  border-top: 1px solid #ccc;
+  margin-top: 24px;
+  padding-top: 40px;
+  padding-bottom: 40px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 91, /vagrant/theplatform/static/css/main.scss */
+    footer.site-footer {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 91, /vagrant/theplatform/static/css/main.scss */
+    footer.site-footer {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 91, /vagrant/theplatform/static/css/main.scss */
+    footer.site-footer {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* DETAIL VIEWS */
+/* line 103, /vagrant/theplatform/static/css/main.scss */
+.template-location-page content h1 {
+  margin-top: -55px; }
+
+/* line 110, /vagrant/theplatform/static/css/main.scss */
+.template-person-page .person-image {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 100%;
+  margin-left: -50px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 110, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page .person-image {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 110, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page .person-image {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 110, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page .person-image {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* line 115, /vagrant/theplatform/static/css/main.scss */
+.template-person-page aside {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  clear: both;
+  display: flex; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 115, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page aside {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 115, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page aside {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 115, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page aside {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 119, /vagrant/theplatform/static/css/main.scss */
+  .template-person-page aside .status-location {
+    display: flex;
+    flex-direction: column;
+    margin-left: 80px; }
+
+/* line 125, /vagrant/theplatform/static/css/main.scss */
+.template-person-page .biography-title {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 125, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page .biography-title {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 125, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page .biography-title {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 125, /vagrant/theplatform/static/css/main.scss */
+    .template-person-page .biography-title {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* line 131, /vagrant/theplatform/static/css/main.scss */
+.template-location-page aside {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  clear: both; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 131, /vagrant/theplatform/static/css/main.scss */
+    .template-location-page aside {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 131, /vagrant/theplatform/static/css/main.scss */
+    .template-location-page aside {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 131, /vagrant/theplatform/static/css/main.scss */
+    .template-location-page aside {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 134, /vagrant/theplatform/static/css/main.scss */
+  .template-location-page aside .people {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0; }
+    /* line 138, /vagrant/theplatform/static/css/main.scss */
+    .template-location-page aside .people .person {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0 20px 10px 0px;
+      max-width: 100px;
+      text-align: center; }
+      /* line 145, /vagrant/theplatform/static/css/main.scss */
+      .template-location-page aside .people .person img {
+        border-radius: 100px;
+        margin: 0 0 10px 0; }
+
+/* line 154, /vagrant/theplatform/static/css/main.scss */
+.block-paragraph {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  max-width: 826.66667px;
+  margin-bottom: 12px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 154, /vagrant/theplatform/static/css/main.scss */
+    .block-paragraph {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 154, /vagrant/theplatform/static/css/main.scss */
+    .block-paragraph {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 154, /vagrant/theplatform/static/css/main.scss */
+    .block-paragraph {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 158, /vagrant/theplatform/static/css/main.scss */
+  .block-paragraph:last-child {
+    margin-bottom: 0; }
+
+/* line 163, /vagrant/theplatform/static/css/main.scss */
+.block-blockquote {
+  width: 250px;
+  float: right;
+  margin-right: 15%;
+  margin-left: 50px; }
+  /* line 168, /vagrant/theplatform/static/css/main.scss */
+  .block-blockquote blockquote {
+    font-family: "Slabo 27px", serif;
+    margin: 20px 0;
+    text-align: left; }
+    /* line 172, /vagrant/theplatform/static/css/main.scss */
+    .block-blockquote blockquote::before {
+      content: "\201C";
+      display: block;
+      font-family: serif;
+      font-size: 4em;
+      margin-bottom: -20px;
+      margin-left: -10px;
+      opacity: 0.5; }
+    /* line 181, /vagrant/theplatform/static/css/main.scss */
+    .block-blockquote blockquote footer {
+      font-family: "Open Sans", sans-serif;
+      font-style: normal;
+      margin-top: 10px;
+      padding-top: 10px; }
+      /* line 186, /vagrant/theplatform/static/css/main.scss */
+      .block-blockquote blockquote footer .attribute_group {
+        margin-top: 0;
+        font-weight: bold; }
+  @media screen and (max-width: 63.9375em) {
+    /* line 163, /vagrant/theplatform/static/css/main.scss */
+    .block-blockquote {
+      display: block;
+      padding-left: 200px;
+      padding-right: 200px;
+      display: block;
+      float: none;
+      margin-left: 0;
+      width: 90%; } }
+  @media screen and (max-width: 63.9375em) and (max-width: 74.9375em) {
+    /* line 163, /vagrant/theplatform/static/css/main.scss */
+    .block-blockquote {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) and (max-width: 63.9375em) {
+    /* line 163, /vagrant/theplatform/static/css/main.scss */
+    .block-blockquote {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 63.9375em) and (max-width: 39.9375em) {
+    /* line 163, /vagrant/theplatform/static/css/main.scss */
+    .block-blockquote {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* line 201, /vagrant/theplatform/static/css/main.scss */
+.block-header {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  max-width: 826.66667px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 201, /vagrant/theplatform/static/css/main.scss */
+    .block-header {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 201, /vagrant/theplatform/static/css/main.scss */
+    .block-header {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 201, /vagrant/theplatform/static/css/main.scss */
+    .block-header {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* line 207, /vagrant/theplatform/static/css/main.scss */
+.block-header + .block-header h2 {
+  margin-top: 0;
+  color: pink; }
+
+/* line 213, /vagrant/theplatform/static/css/main.scss */
+.block-embed {
+  display: block;
+  padding-left: 200px;
+  float: left;
+  margin: 24px 0;
+  width: 826.66667px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 213, /vagrant/theplatform/static/css/main.scss */
+    .block-embed {
+      padding-left: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 213, /vagrant/theplatform/static/css/main.scss */
+    .block-embed {
+      padding-left: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 213, /vagrant/theplatform/static/css/main.scss */
+    .block-embed {
+      padding-left: 20px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 213, /vagrant/theplatform/static/css/main.scss */
+    .block-embed {
+      width: 80%; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 213, /vagrant/theplatform/static/css/main.scss */
+    .block-embed {
+      width: 100%; } }
+
+/* line 227, /vagrant/theplatform/static/css/main.scss */
+.block-image img {
+  height: auto; }
+
+/* line 230, /vagrant/theplatform/static/css/main.scss */
+.block-image figcaption {
+  font-size: 0.9em;
+  font-style: italic;
+  line-height: 1.4em;
+  margin-top: 20px; }
+  /* line 235, /vagrant/theplatform/static/css/main.scss */
+  .block-image figcaption::before {
+    color: #888;
+    content: "\1F4F7";
+    float: left;
+    font-size: 20px;
+    font-style: normal;
+    margin: -1px 10px 15px 0; }
+
+/* line 245, /vagrant/theplatform/static/css/main.scss */
+.block-image .image.contain {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  max-width: 826.66667px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 245, /vagrant/theplatform/static/css/main.scss */
+    .block-image .image.contain {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 245, /vagrant/theplatform/static/css/main.scss */
+    .block-image .image.contain {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 245, /vagrant/theplatform/static/css/main.scss */
+    .block-image .image.contain {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* line 249, /vagrant/theplatform/static/css/main.scss */
+.block-image .image.full {
+  float: right; }
+  /* line 252, /vagrant/theplatform/static/css/main.scss */
+  .block-image .image.full img {
+    width: 100%; }
+  /* line 256, /vagrant/theplatform/static/css/main.scss */
+  .block-image .image.full figcaption {
+    display: block;
+    padding-left: 200px;
+    padding-right: 200px; }
+    @media screen and (max-width: 74.9375em) {
+      /* line 256, /vagrant/theplatform/static/css/main.scss */
+      .block-image .image.full figcaption {
+        padding-left: 100px;
+        padding-right: 100px; } }
+    @media screen and (max-width: 63.9375em) {
+      /* line 256, /vagrant/theplatform/static/css/main.scss */
+      .block-image .image.full figcaption {
+        padding-left: 50px;
+        padding-right: 50px; } }
+    @media screen and (max-width: 39.9375em) {
+      /* line 256, /vagrant/theplatform/static/css/main.scss */
+      .block-image .image.full figcaption {
+        padding-left: 20px;
+        padding-right: 20px; } }
+
+/* line 260, /vagrant/theplatform/static/css/main.scss */
+.block-image .image.half {
+  width: 50%;
+  float: right;
+  max-width: 440px;
+  margin-right: 50px;
+  margin-left: 20px; }
+  /* line 266, /vagrant/theplatform/static/css/main.scss */
+  .block-image .image.half figure {
+    float: right;
+    margin: 10px 0; }
+  /* line 270, /vagrant/theplatform/static/css/main.scss */
+  .block-image .image.half img {
+    width: 100%; }
+  @media screen and (max-width: 63.9375em) {
+    /* line 260, /vagrant/theplatform/static/css/main.scss */
+    .block-image .image.half {
+      margin-left: 40px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 260, /vagrant/theplatform/static/css/main.scss */
+    .block-image .image.half {
+      margin-left: 0px;
+      margin-right: 0px;
+      max-width: 100%;
+      width: 100%; }
+      /* line 281, /vagrant/theplatform/static/css/main.scss */
+      .block-image .image.half figure {
+        margin: 10px 20px; } }
+
+/* line 286, /vagrant/theplatform/static/css/main.scss */
+.block-image .image.full {
+  height: auto; }
+
+/* LIST VIEWS */
+/* line 292, /vagrant/theplatform/static/css/main.scss */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 200px;
+  padding-right: 200px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 292, /vagrant/theplatform/static/css/main.scss */
+    .list {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 292, /vagrant/theplatform/static/css/main.scss */
+    .list {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 292, /vagrant/theplatform/static/css/main.scss */
+    .list {
+      display: block;
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 294, /vagrant/theplatform/static/css/main.scss */
+  .list .list-3 {
+    width: 30.33333%;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: #F5F5F6;
+    overflow: hidden; }
+    @media screen and (max-width: 63.9375em) {
+      /* line 294, /vagrant/theplatform/static/css/main.scss */
+      .list .list-3 {
+        width: 47%; } }
+    @media screen and (max-width: 39.9375em) {
+      /* line 294, /vagrant/theplatform/static/css/main.scss */
+      .list .list-3 {
+        width: 96%; } }
+
+/* line 300, /vagrant/theplatform/static/css/main.scss */
+.people .list-item, .locations .list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  /* line 307, /vagrant/theplatform/static/css/main.scss */
+  .people .list-item .image, .locations .list-item .image {
+    max-height: 168px;
+    overflow: hidden; }
+    /* line 310, /vagrant/theplatform/static/css/main.scss */
+    .people .list-item .image img, .locations .list-item .image img {
+      height: auto;
+      margin: 0;
+      width: 100%; }
+  /* line 316, /vagrant/theplatform/static/css/main.scss */
+  .people .list-item .text, .locations .list-item .text {
+    padding: 0 20px;
+    flex: 1; }
+    /* line 319, /vagrant/theplatform/static/css/main.scss */
+    .people .list-item .text h2, .locations .list-item .text h2 {
+      margin-top: 12px; }
+      /* line 321, /vagrant/theplatform/static/css/main.scss */
+      .people .list-item .text h2 a, .locations .list-item .text h2 a {
+        color: #000000; }
+    /* line 325, /vagrant/theplatform/static/css/main.scss */
+    .people .list-item .text .skills, .locations .list-item .text .skills {
+      margin: 0 0 10px 0; }
+      /* line 327, /vagrant/theplatform/static/css/main.scss */
+      .people .list-item .text .skills li, .locations .list-item .text .skills li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 auto; }
+        /* line 331, /vagrant/theplatform/static/css/main.scss */
+        .people .list-item .text .skills li span, .locations .list-item .text .skills li span {
+          margin-left: -2px; }
+  /* line 338, /vagrant/theplatform/static/css/main.scss */
+  .people .list-item .list-item-footer, .locations .list-item .list-item-footer {
+    padding: 0 20px; }
+    /* line 340, /vagrant/theplatform/static/css/main.scss */
+    .people .list-item .list-item-footer .location, .locations .list-item .list-item-footer .location {
+      display: flex;
+      font-size: 1.3em;
+      padding-bottom: 10px; }
+      /* line 344, /vagrant/theplatform/static/css/main.scss */
+      .people .list-item .list-item-footer .location img, .locations .list-item .list-item-footer .location img {
+        margin: 5px 5px 0 -5px;
+        width: auto;
+        height: 18px; }
+    /* line 350, /vagrant/theplatform/static/css/main.scss */
+    .people .list-item .list-item-footer .people, .locations .list-item .list-item-footer .people {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; }
+      /* line 354, /vagrant/theplatform/static/css/main.scss */
+      .people .list-item .list-item-footer .people .person, .locations .list-item .list-item-footer .people .person {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0 20px 10px 0px;
+        max-width: 100px;
+        text-align: center; }
+        /* line 361, /vagrant/theplatform/static/css/main.scss */
+        .people .list-item .list-item-footer .people .person img, .locations .list-item .list-item-footer .people .person img {
+          border-radius: 100px;
+          margin: 0 auto 10px auto; }
+
+/* line 372, /vagrant/theplatform/static/css/main.scss */
+.template-skills-index-page content {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 372, /vagrant/theplatform/static/css/main.scss */
+    .template-skills-index-page content {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 372, /vagrant/theplatform/static/css/main.scss */
+    .template-skills-index-page content {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 372, /vagrant/theplatform/static/css/main.scss */
+    .template-skills-index-page content {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+/* Quick widths */
+/* line 378, /vagrant/theplatform/static/css/main.scss */
+.half {
+  width: 50%; }
+
+/* line 381, /vagrant/theplatform/static/css/main.scss */
+.percent40 {
+  width: 40%; }
+
+/* line 384, /vagrant/theplatform/static/css/main.scss */
+.percent60 {
+  width: 60%; }
+
+/* Homepage */
+/* line 390, /vagrant/theplatform/static/css/main.scss */
+.template-home-page .strapline {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  font-size: 2em; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 390, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .strapline {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 390, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .strapline {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 390, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .strapline {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 393, /vagrant/theplatform/static/css/main.scss */
+  .template-home-page .strapline p {
+    font-size: 1em;
+    padding: 20px 0; }
+
+/* line 398, /vagrant/theplatform/static/css/main.scss */
+.template-home-page .row-one, .template-home-page .row-two, .template-home-page .row-three {
+  display: block;
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex; }
+  @media screen and (max-width: 74.9375em) {
+    /* line 398, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .row-one, .template-home-page .row-two, .template-home-page .row-three {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  @media screen and (max-width: 63.9375em) {
+    /* line 398, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .row-one, .template-home-page .row-two, .template-home-page .row-three {
+      padding-left: 50px;
+      padding-right: 50px; } }
+  @media screen and (max-width: 39.9375em) {
+    /* line 398, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .row-one, .template-home-page .row-two, .template-home-page .row-three {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  /* line 401, /vagrant/theplatform/static/css/main.scss */
+  .template-home-page .row-one p, .template-home-page .row-two p, .template-home-page .row-three p {
+    font-size: 1.6em;
+    line-height: 1.8;
+    margin-top: 30px;
+    max-width: 550px; }
+  /* line 407, /vagrant/theplatform/static/css/main.scss */
+  .template-home-page .row-one footer, .template-home-page .row-two footer, .template-home-page .row-three footer {
+    margin-top: 20px; }
+    /* line 409, /vagrant/theplatform/static/css/main.scss */
+    .template-home-page .row-one footer a::after, .template-home-page .row-two footer a::after, .template-home-page .row-three footer a::after {
+      content: "\27F6";
+      margin-left: 10px; }
+  /* line 414, /vagrant/theplatform/static/css/main.scss */
+  .template-home-page .row-one img, .template-home-page .row-two img, .template-home-page .row-three img {
+    max-height: 400px;
+    width: auto; }
+
+/* line 419, /vagrant/theplatform/static/css/main.scss */
+.template-home-page .row-one, .template-home-page .row-two {
+  border-bottom: 1px solid #ccc; }
+
+/* line 422, /vagrant/theplatform/static/css/main.scss */
+.template-home-page h2 {
+  margin-top: 60px; }
+  /* line 424, /vagrant/theplatform/static/css/main.scss */
+  .template-home-page h2 a {
+    color: #000000;
+    font-size: 72px;
+    font-weight: bold; }
+
+/* line 430, /vagrant/theplatform/static/css/main.scss */
+.template-home-page .row-two, .template-home-page .row-three {
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
+/* From Wagtail core */
+/* Responsive image/video classes */
+/* line 438, /vagrant/theplatform/static/css/main.scss */
+.rich-text img {
+  max-width: 100%;
+  height: auto; }
+
+/* line 442, /vagrant/theplatform/static/css/main.scss */
+.richtext-image.left {
+  float: left; }
+
+/* line 445, /vagrant/theplatform/static/css/main.scss */
+.richtext-image.right {
+  float: right; }
+
+/* line 448, /vagrant/theplatform/static/css/main.scss */
+.responsive-object {
+  position: relative; }
+
+/* line 453, /vagrant/theplatform/static/css/main.scss */
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
