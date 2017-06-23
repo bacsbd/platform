@@ -1,13 +1,21 @@
 
 {% load static navigation_tags wagtailcore_tags %}
 
-    <nav class="main-menu" role="navigation">
-      <ul class="navigation-menu">
-      {% for menuitem in menuitems %}
-        <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
-                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
+    <nav class="navbar" role="navigation">
+      <div class="container-fluid">
+		<div class="navbar-header">
+		{% brand %}
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				{% for menuitem in menuitems %}
+				<li class="{% if menuitem.active %}active{% endif %}">
+					<a href="{% pageurl menuitem %}">
+						{{ menuitem.title }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+      </div>
   </nav>
-  

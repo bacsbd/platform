@@ -1,0 +1,10 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% for object in brand %}
+<a class="navbar-brand" href="#">
+    <span>
+    	{% image object.orgnaisation_logo fill-200x200-c100 as logo %}
+      	<img src="{{ logo.url }}" alt="{{ logo.alt }}" class="site-logo" />
+    </span>
+    {{ object.organisation_name }}
+</a>
+{% endfor %}
