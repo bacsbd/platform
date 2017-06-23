@@ -8,7 +8,7 @@ from wagtail.wagtailadmin.edit_handlers import (
         MultiFieldPanel,
         PageChooserPanel
         )
-
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 class HomePage(Page):
     """
@@ -20,7 +20,14 @@ class HomePage(Page):
     model to store that information somewhere.
     """
 
-    organisation_name = models.CharField("Who you are", max_length=254)
+    organisation_name = models.CharField("Site title", max_length=254)
+    orgnaisation_logo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     strapline = models.CharField("Organisation strap line", max_length=254)
 
@@ -62,6 +69,7 @@ class HomePage(Page):
 
     content_panels = Page.content_panels + [
             FieldPanel('organisation_name'),
+            ImageChooserPanel('orgnaisation_logo'),
             FieldPanel('strapline'),
             MultiFieldPanel([
                 PageChooserPanel('featured_page_1'),

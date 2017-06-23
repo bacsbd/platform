@@ -5,12 +5,12 @@ from theplatform.home.models import HomePage
 register = template.Library()
 
 
-@register.inclusion_tag('tags/title.html', takes_context=True)
+@register.inclusion_tag('tags/brand.html', takes_context=True)
 # @TODO We should better specify `HomePage.objects.all` since on Wagtail there can
 # be multiple homepages
-def title(context):
+def brand(context):
     return {
-        'title': HomePage.objects.all(),
+        'brand': HomePage.objects.all(),
         'request': context['request'],
     }
 

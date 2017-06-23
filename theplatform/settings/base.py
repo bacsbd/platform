@@ -57,9 +57,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -195,3 +197,8 @@ WAGTAILSEARCH_BACKENDS = {
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "theplatform"
+
+# Debug Tool
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+

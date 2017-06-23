@@ -1,0 +1,5 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% for object in logo %}
+  {% image object.orgnaisation_logo fill-200x200-c100 as logo %}
+              <img src="{{ logo.url }}" alt="{{ logo.alt }}" class="site-logo" />
+{% endfor %}
