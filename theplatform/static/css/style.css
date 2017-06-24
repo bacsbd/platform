@@ -74,6 +74,10 @@ footer {
     bottom: 0;
 }
 
+.footer-bg{
+    background-color: #f7f7f7;
+}
+
 /* Responsive Styles */
 
 @media(max-width:991px) {
