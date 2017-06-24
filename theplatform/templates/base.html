@@ -8,296 +8,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Material Design Bootstrap</title>
+    <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="//bootswatch.com/cosmo/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Material Design Bootstrap -->
-    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
-
-    <!-- Template styles -->
-    <style rel="stylesheet">
-        /* TEMPLATE STYLES */
-        
-        main {
-            padding-top: 3rem;
-            padding-bottom: 2rem;
-        }
-        
-        .extra-margins {
-            margin-top: 1rem;
-            margin-bottom: 2.5rem;
-        }
-         .navbar {
-            background-color: #3b3b3f;
-        }
-        
-        footer.page-footer {
-            background-color: #3b3b3f;
-            margin-top: 2rem;
-         
-        }
-    </style>
+    <!-- Custom Style CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 </head>
 
 <body>
     {% wagtailuserbar %}
 
-    <header>
-
-        <!--Navbar-->
-        <nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
-            <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <strong>BACS</strong>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Pricing</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav nav navbar-nav navbar-right">
-                        <li class="nav-item dropdown btn-group">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
-                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item">Action</a>
-                                <a class="dropdown-item">Another action</a>
-                                <a class="dropdown-item">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!--/.Navbar-->
-
-    </header>
-
-    <main>
-
-        <!--Main layout-->
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <!--First row-->
-            <div class="row wow fadeIn" data-wow-delay="0.2s">
-                <div class="col-lg-7">
-                    <!--Featured image -->
-                    <div class="view overlay hm-white-light z-depth-1-half">
-                        <img src="http://mdbootstrap.com/img/Photos/Slides/img%20%2877%29.jpg" class="img-fluid " alt="">
-                        <div class="mask">
-                        </div>
-                    </div>
-                    <br>
-                </div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Start Bootstrap</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="services.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="full-width.html">Full Width Page</a>
+                            </li>
+                            <li>
+                                <a href="sidebar.html">Sidebar Page</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-                <!--Main information-->
-                <div class="col-lg-5">
-                    <h2 class="h2-responsive">We are professionals</h2>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis pariatur quod ipsum atque quam dolorem voluptate officia sunt placeat consectetur alias fugit cum praesentium ratione sint mollitia, perferendis natus quaerat!</p>
-                    <a href="" class="btn btn-info">Get it now!</a>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+        {% block content  %}
+        {% endblock content %}
+        </div>
+        
+        
+
+        <!-- Footer -->
+        <footer>
+            <hr>
+            <!-- Call to Action Section -->
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                    </div>
                 </div>
             </div>
-            <!--/.First row-->
 
-            <hr class="extra-margins">
-
-            <!--Second row-->
             <div class="row">
-                <!--First columnn-->
-                <div class="col-lg-4">
-                    <!--Card-->
-                    <div class="card wow fadeIn" data-wow-delay="0.4s">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-white-slight">
-                            <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(37).jpg" class="img-fluid" alt="">
-                            <a href="#">
-                                <div class="mask"></div>
-                            </a>
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block">
-                            <!--Title-->
-                            <h4 class="card-title">Card title</h4>
-                            <!--Text-->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-info">Read more</a>
-                        </div>
-                        <!--/.Card content-->
-
-                    </div>
-                    <!--/.Card-->
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
-                <!--First columnn-->
-
-                <!--Second columnn-->
-                <div class="col-lg-4">
-                    <!--Card-->
-                    <div class="card wow fadeIn" data-wow-delay="0.6s">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-white-slight">
-                            <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(21).jpg" class="img-fluid" alt="">
-                            <a href="#">
-                                <div class="mask"></div>
-                            </a>
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block">
-                            <!--Title-->
-                            <h4 class="card-title">Card title</h4>
-                            <!--Text-->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-info">Read more</a>
-                        </div>
-                        <!--/.Card content-->
-
-                    </div>
-                    <!--/.Card-->
-                </div>
-                <!--Second columnn-->
-
-                <!--Third columnn-->
-                <div class="col-lg-4">
-                    <!--Card-->
-                    <div class="card wow fadeIn" data-wow-delay="0.8s">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-white-slight">
-                            <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(12).jpg" class="img-fluid" alt="">
-                            <a href="#">
-                                <div class="mask"></div>
-                            </a>
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block">
-                            <!--Title-->
-                            <h4 class="card-title">Card title</h4>
-                            <!--Text-->
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-info">Read more</a>
-                        </div>
-                        <!--/.Card content-->
-
-                    </div>
-                    <!--/.Card-->
-                </div>
-                <!--Third columnn-->
             </div>
-            <!--/.Second row-->
-        </div>
-        <!--/.Main layout-->
+        </footer>
 
-    </main>
-
-    <!--Footer-->
-    <footer class="page-footer center-on-small-only">
-
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">First column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Second column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Third column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
-
-            </div>
-        </div>
-        <!--/.Footer Links-->
-
-        <hr>
-
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4>Material Design for Bootstrap</h4>
-            <ul>
-                <li>
-                    <h5>Get our UI KIT for free</h5></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/getting-started/" class="btn btn-danger" rel="nofollow">Sign up!</a></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-info" rel="nofollow">Learn more</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
-
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-                © 2017 Copyright: <a href="/"> BACS </a>
-
-            </div>
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--/.Footer-->
+    </div>
+    <!-- /.container -->
 
 
     <!-- SCRIPTS -->
@@ -305,18 +107,8 @@
     <!-- JQuery -->
     <script type="text/javascript" src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
 
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{% static 'js/tether.min.js' %}"></script>
-
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
-    
-    <script>
-    new WOW().init();
-    </script>
+    <script type="text/javascript" src="//bootswatch.com/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 

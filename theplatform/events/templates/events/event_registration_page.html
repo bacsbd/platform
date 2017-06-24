@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags crispy_forms_tags %}
+
+{% block content %}
+    <div class="col-lg-8 col-lg-offset-2">
+        {% if user.is_authenticated and user.is_active or request.is_preview %}
+            {% if form %}
+                <div class="page-header">{{ self.intro|richtext }}</div>
+                {% crispy form %}
+            {% else %}
+                <div>The survey has already been passed.</div>
+            {% endif %}
+        {% else %}
+            <div>To take survey, you must to log in.</div>
+        {% endif %}
+    </div>
+{% endblock content %}
