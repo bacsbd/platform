@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'theplatform.locations',
     'theplatform.people',
     'theplatform.skills',
-
+    'theplatform.events',
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
+    'wagtailsurveys',
 
     'wagtail.contrib.wagtailstyleguide',
     'wagtail.contrib.wagtailapi',
     'rest_framework',
+    'crispy_forms',
 
     'modelcluster',
     'compressor',
@@ -202,3 +204,4 @@ WAGTAIL_SITE_NAME = "theplatform"
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
