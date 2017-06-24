@@ -1,0 +1,9 @@
+{% extends "events/event.html" %}
+{% load wagtailcore_tags wagtailimages_tags crispy_forms_tags %}
+
+{% block event_content %}
+	<div class="jumbotron page-header">
+	  <h1>You are registered!</h1>
+	  <p>{{ self.thank_you_text|richtext }}</p>
+	</div>
+{% endblock event_content %}
