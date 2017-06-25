@@ -1,0 +1,28 @@
+{% extends "./base.html" %}
+{% block main %}
+    <div class= "container">
+        <h3 class="text-center">Login</h3>
+
+        <div id="login">
+            <form class="form-horizontal" name="LoginForm" action="/user/login/" method="post">
+            {% csrf_token %}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+            <div class="control-group">
+                <label class="control-label" for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username"  placeholder="Username">
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <br>
+            <div class="control-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="reset" class="btn">Clear</button>
+            </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

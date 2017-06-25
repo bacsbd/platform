@@ -1,0 +1,76 @@
+{% extends "./base.html" %}
+{% block main %}
+    <div class= "container">
+        <h3 class="text-center">Sign Up</h3>
+        <div id="login">
+            <form class="form-horizontal" name="LoginForm" action="/user/signup/" method="post">
+            {% csrf_token %}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+            <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <input class="form-control" type="text" id="email" name="email"  placeholder="Email Address">
+                
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="first_name">First Name</label>
+                <input class="form-control" type="text" id="first_name" name="first_name"  placeholder="First Name">
+                
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="last_name">Last Name</label>
+                <input class="form-control" type="text" id="last_name" name="last_name"  placeholder="Last Name">
+            </div>
+
+
+            <div class="control-group">
+                <label class="control-label" for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username"  placeholder="Username">
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+            </div>
+
+             <div class="control-group">
+                <label class="control-label" for="confirm_password">Confirm Password</label>
+                <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="address">Address</label>
+                <textarea class="form-control" type="text" id="address" name="address"  placeholder="Address"></textarea>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="institution">Institution</label>
+                <input class="form-control" type="text" id="institution" name="institution"  placeholder="Institution">
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="username">T-Shirt Size</label>
+                <select name="tshirt_size" class="form-control">
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                    <option value="XL">Extra Large</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="username">Role</label>
+                <select name="role" class="form-control">
+                    <option value="student">Student</option>
+                    <option value="academic">Academic Professional</option>
+                </select>
+            </div>
+           
+            <br>
+
+            <div class="control-group">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="reset" class="btn">Clear</button>
+            </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
