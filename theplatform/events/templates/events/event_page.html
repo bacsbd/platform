@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags event_menu %}
+
+{% block content %}
+	{% get_event_root current_page=self as event_root %}
+	<h1 class="page-header">{{ event_root.title }}</h1>
+	{% get_event_menu event_root=event_root calling_page=self %}
+    {% block event_content %}
+    	<div class="row ">
+    		<div class="col-lg-12 event-content">
+    			{{ page.description|richtext }}
+    		</div>
+    	</div>
+	{% endblock event_content %}
+{% endblock content %}

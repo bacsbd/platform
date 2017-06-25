@@ -1,0 +1,16 @@
+{% load static event_menu wagtailcore_tags %}
+
+<ul class="nav nav-pills">
+	<li class="{% if event_root.active %}active{% endif %}">
+			<a href="{% pageurl event_root %}">
+				Home
+			</a>
+		</li>
+	{% for menuitem in secondary_menuitems %}
+  		<li class="{% if menuitem.active %}active{% endif %}">
+			<a href="{% pageurl menuitem %}">
+				{{ menuitem.title }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>
