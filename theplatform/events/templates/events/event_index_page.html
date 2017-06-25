@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+	<h1 class="page-header">{{ page.title }}</h1>
+    {% for event in events %}
+    <div class="row">
+        <div class="col-md-5">
+            <h2> {{ event.title }} </h2>
+            <p>{{ event.summary | richtext }}</p>
+            <a class="btn btn-primary" href="{{ event.url }}">Check event</i></a>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+    
+{% endblock %}
