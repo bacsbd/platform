@@ -26,10 +26,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'theplatform',  # To load the management commands
     'theplatform.home',
-    'theplatform.locations',
-    'theplatform.people',
-    'theplatform.skills',
     'theplatform.events',
+    
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
