@@ -213,7 +213,6 @@ WAGTAILSEARCH_BACKENDS = {
 WAGTAIL_SITE_NAME = "theplatform"
 LOGIN_URL="/user/login"
 
-
 # Debug Tool
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
