@@ -102,3 +102,6 @@ ENV/
 # Vagrant
 .vagrant
 .DS_*
+
+# Environment Files
+bacsenv/
