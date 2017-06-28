@@ -108,18 +108,10 @@ WSGI_APPLICATION = 'theplatform.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'theplatform',
-    # },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'theplatform',
-        'USER': 'platform',
-        'PASSWORD': 'changeme',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'theplatform',
+    },
 }
 
 
