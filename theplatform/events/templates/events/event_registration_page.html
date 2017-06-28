@@ -3,15 +3,15 @@
 
 {% block event_content %}
     <div class="col-lg-8 col-lg-offset-2">
-        {% if user.is_authenticated and user.is_active or request.is_preview %}
+        {% if request.user.is_authenticated and request.user.is_active or request.is_preview %}
             {% if form %}
                 <div class="page-header">{{ self.intro|richtext }}</div>
                 {% crispy form %}
             {% else %}
-                <div>The survey has already been passed.</div>
+                <div class="page-header">Registration Closed!</div>
             {% endif %}
         {% else %}
-            <div>To take survey, you must to log in.</div>
+            <div class="page-header">You have to <a href="/user/login">first</a> to register for the the event</div>
         {% endif %}
     </div>
 {% endblock event_content %}
