@@ -7,6 +7,7 @@ from django.db import models
 import django.utils.timezone
 from django.core.serializers.json import DjangoJSONEncoder
 from modelcluster.fields import ParentalKey
+from django.shortcuts import render
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
@@ -94,6 +95,17 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
             form_data=json.dumps(form.cleaned_data, cls=DjangoJSONEncoder),
             page=self, user=form.user
         )
+
+	def serve(self, request, *args, **kwargs):
+		if self.get_submission_class().objects.filter(page=self, user__pk=request.user.pk).exists():
+			return render(
+                request,
+                self.template,
+                self.get_context(request)
+            )
+
+		return super(EventRegistrationPage, self).serve(request, *args, **kwargs)
+
 
 class EventRegistrationFormField(surveys_models.AbstractFormField):
 	page = ParentalKey(EventRegistrationPage, related_name='event_registration_form_fields')
