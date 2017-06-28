@@ -1,7 +1,11 @@
 from __future__ import unicode_literals
 
+import json
+
+from django.conf import settings
 from django.db import models
 import django.utils.timezone
+from django.core.serializers.json import DjangoJSONEncoder
 from modelcluster.fields import ParentalKey
 
 from wagtail.wagtailcore.models import Page
@@ -72,7 +76,43 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
         FieldPanel('thank_you_text', classname="full"),
     ]
 
+	def get_data_fields(self):
+		data_fields = [
+            ('username', 'Username'),
+            ('fullname', 'FullName'),
+            ('email', 'Email'),
+            ('institution', 'Institution')
+        ]
+		data_fields += super(EventRegistrationPage, self).get_data_fields()
+		return data_fields
+
+	def get_submission_class(self):
+		return CustomEventSubmission
+	
+	def process_form_submission(self, form):
+		self.get_submission_class().objects.create(
+            form_data=json.dumps(form.cleaned_data, cls=DjangoJSONEncoder),
+            page=self, user=form.user
+        )
+
 class EventRegistrationFormField(surveys_models.AbstractFormField):
 	page = ParentalKey(EventRegistrationPage, related_name='event_registration_form_fields')
 
+
+class CustomEventSubmission(surveys_models.AbstractFormSubmission):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	
+	class Meta:
+		unique_together = ('page', 'user')
+
+	def get_data(self):
+		form_data = super(CustomEventSubmission, self).get_data()
+		form_data.update({
+            'username': self.user.username,
+            'email': self.user.email,
+            'institution': self.user.institution,
+            'fullname': self.user.first_name + ' ' + self.user.last_name,
+        })
+        
+		return form_data
 

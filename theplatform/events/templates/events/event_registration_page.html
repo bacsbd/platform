@@ -6,9 +6,17 @@
         {% if request.user.is_authenticated and request.user.is_active or request.is_preview %}
             {% if form %}
                 <div class="page-header">{{ self.intro|richtext }}</div>
-                {% crispy form %}
+                <form method="post" action="{% pageurl self %}" >
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <input type="submit" class="btn btn-success btn-block" value="Register">
+                        </div>
+                    </div>
+                </form>
             {% else %}
-                <div class="page-header">Registration Closed!</div>
+                <div class="page-header">Either the registration is closed or You have already registered.</div>
             {% endif %}
         {% else %}
             <div class="page-header">You have to <a href="/user/login">first</a> to register for the the event</div>
