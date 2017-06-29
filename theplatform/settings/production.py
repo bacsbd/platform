@@ -7,7 +7,7 @@ from .base import *
 # Instead, use environment variables or create a local.py file on the server.
 
 # Disable debug mode
-DEBUG = False
+DEBUG = True
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
 
@@ -81,7 +81,9 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': env.get('PGDATABASE', APP_NAME),
             'CONN_MAX_AGE': 600,  # number of seconds database connections should persist for
-
+	    'USER': env.get('PGUSER', APP_NAME),
+            'HOST': env.get('PGHOST', APP_NAME),
+            'PASSWORD': env.get('PGPASSWORD', APP_NAME),
             # User, host and port can be configured by the PGUSER, PGHOST and
             # PGPORT environment variables (these get picked up by libpq).
         }
