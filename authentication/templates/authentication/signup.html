@@ -14,6 +14,21 @@
                         <p>
                             (*) means required field
                         </p> 
+
+                        {% if messages %}
+
+                        <div class="alert alert-danger">
+                            <h4><strong>Oh snap!</strong></h4>
+                            <!--<br>-->
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>    
+                        </div>
+                        
+                        {% endif %}
+
                         <div class="form-group">
                             <label class="control-label" for="first_name">First Name *</label>
                             <input class="form-control" type="text" id="first_name" name="first_name"  placeholder="First Name">

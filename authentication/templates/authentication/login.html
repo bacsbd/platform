@@ -10,6 +10,21 @@
                     {% endif %}
                     <fieldset>
                         <h2>Please Sign In</h2>
+                        {% if messages %}
+
+                        <div class="alert alert-danger">
+                            <strong>Oh snap!</strong>
+                            <br>
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>    
+                        </div>
+                        
+                        {% endif %}
+
+
                         <hr class="colorgraph">
                         <div class="form-group">
                             <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username">

@@ -10,6 +10,8 @@ from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
 
+from django.contrib import messages
+
 # from .renderers import UserJSONRenderer
 
 from .serializers import (
@@ -39,7 +41,14 @@ class RegistrationView(View):
             return redirect('/user/signup/')
 
         serializer = self.serializer_class(data=user)
-        serializer.is_valid(raise_exception=True)
+        serializer.is_valid()
+
+        for field, error in serializer.errors.items():
+            messages.error(request, "'"+field + "': " + error[0])
+
+        if serializer.errors:
+            return redirect('/user/signup')
+
         serializer.save()
 
         return redirect('/user/login')
@@ -64,7 +73,10 @@ class LoginView(View):
         }
 
         serializer = self.serializer_class(data=user)
-        serializer.is_valid(raise_exception=True)
+        serializer.is_valid()
+
+        for field, error in serializer.errors.items():
+            messages.error(request, "'"+field + "': " + error[0])
 
         user = authenticate(username=username, password=password)
 
@@ -94,10 +106,24 @@ class UserRetrieveUpdateView(View):
         """ POST """
         serializer_data = request.POST
 
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
         serializer = self.serializer_class(
             request.user, data=serializer_data, partial=True
         )
-        serializer.is_valid(raise_exception=True)
+        serializer.is_valid()
+
+        if password != confirm_password:
+            messages.error(request, "'password' and 'confirm_password' fields must match")
+            return redirect('/user/profile/')
+
+        for field, error in serializer.errors.items():
+            messages.error(request, "'"+field + "': " + error[0])
+
+        if serializer.errors:
+            return redirect('/user/profile')
+
         serializer.save()
 
         return redirect('/user/profile')
