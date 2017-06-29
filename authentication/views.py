@@ -84,6 +84,8 @@ class LoginView(View):
             if user.verified and user.is_active:
                 login(request, user)
                 return redirect('/user/profile/')
+        else:
+            messages.error(request, "A user with same Username and Password was not found")
 
         return redirect('/user/login')
 
