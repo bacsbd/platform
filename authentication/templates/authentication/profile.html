@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+
+{% block title %}User Profile - BACS{% endblock %}
+
 {% block content %}
     <div class= "container">
         <div class="row" style="margin-top:20px">
@@ -6,19 +9,54 @@
                 <h2 class="text-center">Profile</h2>
                 <hr>
 
-                {% if messages %}
-
-                <div class="alert alert-danger">
-                    <strong>Oh snap!</strong>
-                    <br>
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>    
-                </div>
-                
+                {% if success_message %}
+                    <div class="alert alert-success">
+                        <strong>Well done!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in success_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>
+                    </div>
                 {% endif %}
+
+                {% if error_message %}
+                    <div class="alert alert-danger">
+                        <strong>Oh snap!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in error_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>    
+                    </div>
+                {% endif %}
+
+                {% if warning_message %}
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in warning_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if info_message %}
+                    <div class="alert alert-info">
+                        <strong>Heads up!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in info_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>    
+                    </div>
+                {% endif %}
+                
                 <div id="login">
                     <form class="form-horizontal" name="PROFILEForm" action="/user/profile/" method="post">
                     {% csrf_token %}

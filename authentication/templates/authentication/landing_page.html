@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - BACS{% endblock %}
+
+{% block content %}
+
+    <div class= "container">
+        <div class="row" style="margin-top:20px">
+                {% if success_message %}
+                    <div class="alert alert-success">
+                        <strong>Well done!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in success_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if error_message %}
+                    <div class="alert alert-danger">
+                        <strong>Oh snap!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in error_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>    
+                    </div>
+                {% endif %}
+
+                {% if warning_message %}
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in warning_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if info_message %}
+                    <div class="alert alert-info">
+                        <strong>Heads up!</strong>
+                        <br>
+                        <ul class="messages">
+                            {% for message in info_message %}
+                                <li>{{ message }}</li>                                
+                            {% endfor %}
+                        </ul>    
+                    </div>
+                {% endif %}
+
+                <div class="jumbotron text-center">
+                    <h1>Welcome</h1>
+                    <p>
+                        Welcome to Bangladesh Advanced Computing Society!
+                    </p>
+                    <div>
+                        <a class="btn btn-success btn-lg" href="/events">Events</a>
+                        <a class="btn btn-warning btn-lg" href="/user/profile">Edit Profile</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

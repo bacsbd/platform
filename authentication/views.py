@@ -11,6 +11,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
 
 from django.contrib import messages
+from django.contrib.messages import get_messages
 
 # from .renderers import UserJSONRenderer
 
@@ -26,7 +27,23 @@ class RegistrationView(View):
 
     def get(self, request):
         """ GET """
-        return render(request, 'authentication/signup.html', {})
+        storage = get_messages(request)
+        flash_message = {
+            'error': [],
+            'success': [],
+            'warning': [],
+            'info': [],
+        }
+
+        for message in storage:
+            flash_message[message.tags].append(message.__str__())
+
+        return render(request, 'authentication/signup.html', {
+            'error_message': flash_message['error'],
+            'success_message': flash_message['success'],
+            'warning_message': flash_message['warning'],
+            'info_message': flash_message['info'],
+        })
 
     def post(self, request):
         """
@@ -50,7 +67,7 @@ class RegistrationView(View):
             return redirect('/user/signup')
 
         serializer.save()
-
+        messages.success(request, "User Registration was successful! You may now login.")
         return redirect('/user/login')
 
 class LoginView(View):
@@ -59,7 +76,23 @@ class LoginView(View):
     serializer_class = LoginSerializer
 
     def get(self, request):
-        return render(request, 'authentication/login.html', {})
+        storage = get_messages(request)
+        flash_message = {
+            'error': [],
+            'success': [],
+            'warning': [],
+            'info': [],
+        }
+
+        for message in storage:
+            flash_message[message.tags].append(message.__str__())
+
+        return render(request, 'authentication/login.html', {
+            'error_message': flash_message['error'],
+            'success_message': flash_message['success'],
+            'warning_message': flash_message['warning'],
+            'info_message': flash_message['info'],
+        })
 
     def post(self, request):
         """
@@ -83,9 +116,10 @@ class LoginView(View):
         if not user is None:
             if user.verified and user.is_active:
                 login(request, user)
-                return redirect('/user/profile/')
+                messages.success(request, "Login Successful!")
+                return redirect('/user/welcome')
         else:
-            messages.error(request, "A user with same Username and Password was not found")
+            messages.error(request, "A user with similar Username and Password was not found")
 
         return redirect('/user/login')
 
@@ -98,10 +132,26 @@ class UserRetrieveUpdateView(View):
 
     def get(self, request):
         """ GET """
+
+        storage = get_messages(request)
+        flash_message = {
+            'error': [],
+            'success': [],
+            'warning': [],
+            'info': [],
+        }
+
+        for message in storage:
+            flash_message[message.tags].append(message.__str__())
+
         serializer = self.serializer_class(request.user)
 
         return render(request, 'authentication/profile.html', {
-            'user': serializer.data
+            'user': serializer.data,
+            'error_message': flash_message['error'],
+            'success_message': flash_message['success'],
+            'warning_message': flash_message['warning'],
+            'info_message': flash_message['info'],
         })
 
     def post(self, request):
@@ -137,3 +187,31 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('/user/login/')
+
+@method_decorator(login_required, name='get')
+class LandingPageView(View):
+    permission_classes = (IsAuthenticated,)
+    # renderer_classes = (UserJSONRenderer,)
+    # serializer_class = LoginSerializer
+
+    def get(self, request):
+        storage = get_messages(request)
+        flash_message = {
+            'error': [],
+            'success': [],
+            'warning': [],
+            'info': [],
+        }
+
+        for message in storage:
+            flash_message[message.tags].append(message.__str__())
+
+        return render(request, 'authentication/landing_page.html', {
+            'error_message': flash_message['error'],
+            'success_message': flash_message['success'],
+            'warning_message': flash_message['warning'],
+            'info_message': flash_message['info'],
+        })
+
+    def post(self, request):
+        return redirect('/user/welcome')
