@@ -69,6 +69,12 @@ if 'MEDIA_URL' in env:
 if 'MEDIA_DIR' in env:
     MEDIA_ROOT = env['MEDIA_DIR']
 
+# Email
+
+if 'MAILGUN_ACCESS_KEY' in env and 'MAILGUN_SERVER_NAME' in env:
+    EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+    MAILGUN_ACCESS_KEY = env['MAILGUN_ACCESS_KEY']
+    MAILGUN_SERVER_NAME = env['MAILGUN_SERVER_NAME']
 
 # Database
 

@@ -210,3 +210,4 @@ LOGIN_URL="/user/login"
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
