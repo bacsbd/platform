@@ -91,20 +91,14 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 		return CustomEventSubmission
 	
 	def process_form_submission(self, form):
-		self.get_submission_class().objects.create(
-            form_data=json.dumps(form.cleaned_data, cls=DjangoJSONEncoder),
+		submission, created = self.get_submission_class().objects.get_or_create(
             page=self, user=form.user
         )
+		submission.form_data=json.dumps(form.cleaned_data, cls=DjangoJSONEncoder)
+		submission.save()
 
-	def serve(self, request, *args, **kwargs):
-		if self.get_submission_class().objects.filter(page=self, user__pk=request.user.pk).exists():
-			return render(
-                request,
-                self.template,
-                self.get_context(request)
-            )
 
-		return super(EventRegistrationPage, self).serve(request, *args, **kwargs)
+
 
 
 class EventRegistrationFormField(surveys_models.AbstractFormField):
@@ -113,9 +107,6 @@ class EventRegistrationFormField(surveys_models.AbstractFormField):
 
 class CustomEventSubmission(surveys_models.AbstractFormSubmission):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-	
-	class Meta:
-		unique_together = ('page', 'user')
 
 	def get_data(self):
 		form_data = super(CustomEventSubmission, self).get_data()
