@@ -13,7 +13,7 @@ django-forms-bootstrap==3.1.0
 django-libsass==0.6
 django-mailgun==0.9.1
 django-modelcluster==3.1
-django-password-reset==0.9
+django-password-reset==1.0
 django-redis==4.3.0
 django-taggit==0.22.1
 django-treebeard==4.1.1
