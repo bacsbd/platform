@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'theplatform',  # To load the management commands
     'theplatform.home',
     'theplatform.events',
-    
+    'password_reset',
+
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',

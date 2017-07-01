@@ -8,6 +8,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
 
 from authentication import urls as auth_urls
+from password_reset import urls as password_reset_urls
 
 # The only amend to this urls.py from out-of-the-box Wagtail is to add the
 # API endpoint
@@ -19,6 +20,7 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^api/', include(wagtailapi_urls)),
     url(r'^user/', include(auth_urls)),
+    url(r'^password/?', include(password_reset_urls)),
 ]
 
 
