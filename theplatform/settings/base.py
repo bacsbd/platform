@@ -211,3 +211,8 @@ LOGIN_URL="/user/login"
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+# Email Settings
+
+DEFAULT_FROM_EMAIL = 'Bangladesh Advanced Computing Society <no-reply@bacsbd.org>'
+SERVER_EMAIL = 'no-reply@bacsbd.org'
+
