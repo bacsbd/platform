@@ -82,7 +82,8 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
             ('username', 'Username'),
             ('fullname', 'FullName'),
             ('email', 'Email'),
-            ('institution', 'Institution')
+            ('institution', 'Institution'),
+            ('tshirt_size', 'Tshirt Size')
         ]
 		data_fields += super(EventRegistrationPage, self).get_data_fields()
 		return data_fields
@@ -115,6 +116,7 @@ class CustomEventSubmission(surveys_models.AbstractFormSubmission):
             'email': self.user.email,
             'institution': self.user.institution,
             'fullname': self.user.first_name + ' ' + self.user.last_name,
+            'tshirt_size': self.user.tshirt_size,
         })
         
 		return form_data
