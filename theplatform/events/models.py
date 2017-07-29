@@ -114,16 +114,18 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 				)
 		else:
 			form = self.get_form(page=self, user=request.user)
-			try:
-				submission = self.get_submission_class().objects.get(
-					page=self, user=form.user
-				)
-			except ObjectDoesNotExist:
-				pass
-			else:
-				submission = json.loads(submission.form_data)
-				for key, val in submission.items():
-					form.fields[key].initial = val
+
+			if request.user.is_authenticated:
+				try:
+					submission = self.get_submission_class().objects.get(
+						page=self, user=form.user
+					)
+				except ObjectDoesNotExist:
+					pass
+				else:
+					submission = json.loads(submission.form_data)
+					for key, val in submission.items():
+						form.fields[key].initial = val
 		
 		context = self.get_context(request)
 		context['form'] = form
