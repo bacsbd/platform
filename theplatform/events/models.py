@@ -124,7 +124,8 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 				else:
 					submission = json.loads(submission.form_data)
 					for key, val in submission.items():
-						form.fields[key].initial = val
+						if form.fields.get(key):
+							form.fields[key].initial = val
 		
 		context = self.get_context(request)
 		context['form'] = form
