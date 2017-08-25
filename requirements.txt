@@ -13,7 +13,6 @@ django-forms-bootstrap==3.1.0
 django-libsass==0.6
 django-mailgun==0.9.1
 django-modelcluster==3.1
-django-password-reset==1.0
 django-redis==4.3.0
 django-taggit==0.22.1
 django-treebeard==4.1.1
@@ -51,6 +50,5 @@ wagtail==1.10.1
 wagtailsurveys==0.1.1
 wcwidth==0.1.7
 webencodings==0.5.1
-wheel==0.24.0
 whitenoise==2.0.4
 Willow==0.4
