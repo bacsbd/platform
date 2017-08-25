@@ -43,7 +43,7 @@
                                 <br>
                                 <ul class="messages">
                                     {% for message in warning_message %}
-                                        <li>{{ message }}</li>                                
+                                        <li>{{ message | safe}}</li>                                
                                     {% endfor %}
                                 </ul>
                             </div>

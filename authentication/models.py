@@ -14,4 +14,4 @@ class User(AbstractUser):
     role = models.CharField(max_length=15)
     tshirt_size = models.CharField(max_length=4, default="L")
     division = models.CharField(db_index=True, max_length=10)
-    verified = models.BooleanField(default=True)
+    verified = models.BooleanField(default=False)
