@@ -19,6 +19,9 @@ from .serializers import (
     RegistrationSerializer, LoginSerializer, UserSerializer,
 )
 
+from django.contrib.sites.shortcuts import get_current_site
+from .logics import check_verification, send_verification_email
+from authentication.models import User
 
 class RegistrationView(View):
     permission_classes = (AllowAny,)
@@ -67,7 +70,17 @@ class RegistrationView(View):
             return redirect('/user/signup')
 
         serializer.save()
-        messages.success(request, "User Registration was successful! You may now login.")
+    
+        context = {
+            'username': serializer.data.get('username'),
+            'email': serializer.data.get('email'),
+            'site': get_current_site(request),
+            'secure': request.is_secure(),
+        }
+
+        send_verification_email(context)
+
+        messages.success(request, "User Registration was successful! Verifcation Link has been sent to your email address.")
         return redirect('/user/login')
 
 class LoginView(View):
@@ -112,12 +125,15 @@ class LoginView(View):
             messages.error(request, "'"+field + "': " + error[0])
 
         user = authenticate(username=username, password=password)
-
         if not user is None:
             if user.verified and user.is_active:
                 login(request, user)
                 messages.success(request, "Login Successful!")
                 return redirect('/user/welcome')
+            else:
+                messages.warning(request, "Your Email address hasn't been verified. \
+                Click this <a href='/user/verification/resend/?username="+ user.username \
+                +"'>link</a> to resend verification email")
         else:
             messages.error(request, "A user with similar Username and Password was not found")
 
@@ -215,3 +231,35 @@ class LandingPageView(View):
 
     def post(self, request):
         return redirect('/user/welcome')
+
+class EmailVerificationView(View):
+    def get(self, request, token):
+        if check_verification(token):
+            messages.success(request, "Email Verification Successful!")
+        else:
+            messages.error(request, "Not a valid request")
+
+        return redirect('/user/login')
+
+
+class VerificationResendView(View):
+    def get(self, request):
+        username = request.GET['username']
+        user = User.objects.get(username=username)
+        if user is None:
+            messages.error("Not a valid request")
+            return redirect('/user/login')
+
+        context = {
+            'username': username,
+            'id': user.id,
+            'email': user.email,
+            'site': get_current_site(request),
+            'secure': request.is_secure(),
+        }
+
+        send_verification_email(context)
+
+        messages.success(request, "Verification Email Sent to " + user.email)
+
+        return redirect('/user/login')
