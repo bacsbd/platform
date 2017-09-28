@@ -68,6 +68,17 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 	]
 	intro = RichTextField(blank=True)
 	thank_you_text = RichTextField(blank=True)
+	
+	REGISTRATION_FORM_CHOICES = (
+		(0, 'Open for All'),
+		(1, 'Open for users who already registered'),
+		(2, 'Closed'),
+	)
+
+	registration_form_status = models.SmallIntegerField(
+		choices=REGISTRATION_FORM_CHOICES,
+		default=0
+	)
 
 	def get_form_fields(self):
 		return self.event_registration_form_fields.all()
@@ -76,6 +87,7 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 		FieldPanel('intro', classname="full"),
 		InlinePanel('event_registration_form_fields', label="Form fields"),
 		FieldPanel('thank_you_text', classname="full"),
+		FieldPanel('registration_form_status')
 	]
 
 	def get_data_fields(self):
@@ -100,6 +112,7 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 		submission.save()
 	
 	def serve(self, request, *args, **kwargs):
+
 		if request.method == 'POST':
 			form = self.get_form(request.POST, page=self, user=request.user)
 
@@ -120,7 +133,13 @@ class EventRegistrationPage(surveys_models.AbstractSurvey):
 						page=self, user=form.user
 					)
 				except ObjectDoesNotExist:
-					pass
+					if self.registration_form_status == 1: # Event is open only for users who are already registered
+						# render the landing_page
+						return render(
+							request,
+							self.template,
+							self.get_context(request)
+						)
 				else:
 					submission = json.loads(submission.form_data)
 					for key, val in submission.items():

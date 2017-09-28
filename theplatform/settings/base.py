@@ -29,7 +29,8 @@ AUTH_USER_MODEL = 'authentication.user'
 INSTALLED_APPS = [
 
     'authentication',
-
+    'wagtailsurveys',
+    
     'theplatform',  # To load the management commands
     'theplatform.home',
     'theplatform.events',
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-    'wagtailsurveys',
+    
 
     'wagtail.contrib.wagtailstyleguide',
     'wagtail.contrib.wagtailapi',
