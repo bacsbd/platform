@@ -21,7 +21,7 @@ class User(AbstractUser):
 
 
 class APIAuth(BaseModel):
-    secret = models.CharField(db_index=True, max_length=255, unique=True)
+    secret = models.CharField(db_index=True, max_length=255, unique=True, editable=False)
     valid = models.BooleanField(default=True)
     description = models.CharField(db_index=True, max_length=255, default="")
 
