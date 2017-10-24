@@ -21,10 +21,11 @@ class User(AbstractUser):
 
 
 class APIAuth(BaseModel):
-    secret = models.CharField(db_index=True, max_length=255, unique=True, editable=False)
+    secret = models.CharField(db_index=True, max_length=255, unique=True)
     valid = models.BooleanField(default=True)
     description = models.CharField(db_index=True, max_length=255, default="")
 
-    def __init__(self):
-        super(APIAuth, self).__init__()
+    def save(self, *args, **kwargs):
         self.secret = str(uuid.uuid4().hex)
+        super(APIAuth, self).save(*args, **kwargs)
+

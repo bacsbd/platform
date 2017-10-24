@@ -8,5 +8,6 @@ class APIAuthModelAdmin(ModelAdmin):
 	menu_label = 'API Registration'
 	menu_icon = 'password'
 	list_display = ('description', 'secret')
+	readonly_fields=('secret', )
 
 modeladmin_register(APIAuthModelAdmin)
