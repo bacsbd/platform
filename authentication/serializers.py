@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 
-from .models import User
+from .models import User, APIAuth
 
 class RegistrationSerializer(serializers.ModelSerializer):
     """
@@ -37,7 +37,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=255)
-    password = serializers.CharField(max_length=128, write_only=True)
+    password = serializers.CharField(max_length=128)
 
     def validate(self, data):
         username = data.get('username', None)
@@ -99,3 +99,41 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+
+class APILoginSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=255)
+    password = serializers.CharField(max_length=128)
+    secret_key = serializers.CharField(max_length=255)
+    
+    def validate(self, data):
+        username = data.get('username', None)
+        password = data.get('password', None)
+        secret_key = data.get('secret_key', None)
+
+
+        if username is None:
+            raise serializers.ValidationError(
+                'username is required to log in.'
+            )
+
+        if password is None:
+            raise serializers.ValidationError(
+                'password is required to log in.'
+            )
+        
+        if secret_key is None:
+            raise serializers.ValidationError(
+                'Secret key is required'
+            )
+        
+        apiAuth = APIAuth.objects.filter(secret=secret_key)
+        
+        if not apiAuth:
+            raise serializers.ValidationError(
+                'Secret key authentication failed.'
+            )
+        
+
+
+        return data

@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from .views import (
     LoginView, RegistrationView, UserRetrieveUpdateView, LogoutView, LandingPageView, EmailVerificationView,
-    VerificationResendView,
+    VerificationResendView, APILoginView
 )
 
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^verify/(?P<token>[\w:\.-]+)/$', EmailVerificationView.as_view(),
         name='email_verification_view'),
     url(r'^verification/resend/?$', VerificationResendView.as_view()),
+    url(r'^login-api/?$', APILoginView.as_view()),
 ]

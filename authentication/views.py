@@ -9,6 +9,7 @@ from rest_framework import status
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from django.contrib import messages
 from django.contrib.messages import get_messages
@@ -16,7 +17,7 @@ from django.contrib.messages import get_messages
 # from .renderers import UserJSONRenderer
 
 from .serializers import (
-    RegistrationSerializer, LoginSerializer, UserSerializer,
+    RegistrationSerializer, LoginSerializer, UserSerializer, APILoginSerializer,
 )
 
 from django.contrib.sites.shortcuts import get_current_site
@@ -263,3 +264,54 @@ class VerificationResendView(View):
         messages.success(request, "Verification Email Sent to " + user.email)
 
         return redirect('/user/login')
+
+
+class APILoginView(APIView):
+    serializer_class = APILoginSerializer
+    
+    def get(self, request):
+        return Response("", status=status.HTTP_200_OK)
+    
+    def post(self, request):
+        """
+        Handle post request
+        """
+        username = request.data.get('username', {})
+        password = request.data.get('password', {})
+        secret_key = request.data.get('secret_key', {})
+        user = {
+            'username': username,
+            'password': password,
+            'secret_key' : secret_key,
+        }
+
+        serializer = self.serializer_class(data=user)
+        
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        user = authenticate(username=username, password=password)
+        if not user is None:
+            if user.verified and user.is_active:
+                data = {
+                    "username": user.username,
+                    "email": user.email,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "address": user.address,
+                    "role": user.role,
+                    "institution": user.institution
+                }
+                
+                return Response(data, status=status.HTTP_200_OK)
+            else:
+                errors = {
+                    "error": [{"not_verified": "User not yet verified"}]
+                }
+                return Response(errors, status=status.HTTP_403_FORBIDDEN)
+    
+        errors = {
+            "error": [{"user_not_found": "User with similar username and password not found"}]
+        }
+
+        return Response(errors, status=status.HTTP_404_NOT_FOUND)
