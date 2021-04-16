@@ -10,7 +10,7 @@ Django==1.10.1
 django-appconf==1.0.2
 django-compressor==2.1.1
 django-crispy-forms==1.6.1
-django-debug-toolbar==1.8
+django-debug-toolbar==1.11.1
 django-forms-bootstrap==3.1.0
 django-libsass==0.6
 django-mailgun==0.9.1
