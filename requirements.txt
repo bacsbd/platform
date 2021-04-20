@@ -53,7 +53,7 @@ typing==3.6.1
 Unidecode==0.4.20
 urllib3==1.21.1
 uWSGI==2.0.11.2
-wagtail==1.13
+wagtail==2.11.6
 wagtailsurveys==0.1.1
 wcwidth==0.1.7
 webencodings==0.5.1
